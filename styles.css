@@ -130,48 +130,6 @@ body {
     height: auto;
 }
 
-/* --- 3. 로고 그리드 --- */
-.logo-grid-title {
-    font-size: 1.2em;
-    font-weight: 700;
-    color: #333;
-    /* 목표: 서브 제목과 붙입니다. */
-    margin-top: 20px;
-    margin-bottom: 0px; 
-    text-align: center;
-}
-
-/* 새로운 서브 제목 스타일 */
-.logo-grid-subtitle {
-    font-size: 0.95em;
-    font-weight: 400;
-    color: #C70000;
-    /* 목표: 주 제목에 붙입니다. */
-    margin-top: 5px; /* 주 제목과의 최소 여백 (완전히 붙이려면 0px) */
-    /* 로고 그리드와의 간격은 유지합니다. */
-    margin-bottom: 20px; 
-    padding: 0 10px;
-}
-
-.logo-grid-section {
-	padding-top: 20px;
-    padding-bottom: 30px;
-    border-top: 1px solid #eee;
-}
-
-.logo-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3열로 배치 */
-    gap: 15px;
-    padding: 15px 0;
-}
-
-.partner-logo {
-    width: 100%;
-    height: auto;
-    opacity: 0.9; /* 로고 색상을 연하게 */
-}
-
 .more-info-link {
     font-size: 0.85em;
     color: #a08c6c;
@@ -384,4 +342,5 @@ body {
 .copyright {
     font-size: 0.75em;
     color: #999;
+
 }
