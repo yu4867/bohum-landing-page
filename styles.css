@@ -344,3 +344,33 @@ body {
     color: #999;
 
 }
+
+/* 출산지원금 CTA 버튼 스타일 */
+.maternity-cta-container {
+    margin: 10px 0 40px 0;
+    padding: 0 10px;
+}
+
+.maternity-cta-button {
+    display: block;
+    width: 100%;
+    padding: 20px 0;
+    background-color: #C70000;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.25em;
+    font-weight: 700;
+    border-radius: 50px; /* 둥근 캡슐 형태 */
+    box-shadow: 0 6px 12px rgba(199, 0, 0, 0.3); /* 강조를 위한 그림자 */
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.maternity-cta-button i {
+    margin-right: 8px; /* 선물 아이콘과 텍스트 간격 */
+}
+
+.maternity-cta-button:hover {
+    background-color: #A93030;
+    transform: translateY(-3px); /* 호버 시 위로 살짝 뜨는 효과 */
+}
