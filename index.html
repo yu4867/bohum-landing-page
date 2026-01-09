@@ -1,200 +1,385 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>보험콕 배민준</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+/* 기본 설정 및 폰트 */
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #e9e9e9;
+    margin: 0;
+    padding: 0;
+    /* [수정됨] flex 제거 (팝업 위치 오류 해결) */
+}
+
+/* 컨테이너 */
+.container {
+    width: 100%;
+    max-width: 450px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1408683974204263');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1408683974204263&ev=PageView&noscript=1"
-    /></noscript>
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var callBtn = document.getElementById('btnCall');
-        if (callBtn) {
-            callBtn.addEventListener('click', function () {
-                if (window.fbq) fbq('track', 'Contact');
-            });
-        }
-        var kakaoBtn = document.getElementById('btnKakao');
-        if (kakaoBtn) {
-            kakaoBtn.addEventListener('click', function () {
-                if (window.fbq) fbq('track', 'Contact');
-            });
-        }
-    });
-    </script>
-</head>
-<body>
-    <div class="container">
+    /* [수정됨] 화면 중앙 정렬 */
+    margin: 0 auto; 
+    min-height: 100vh;
+}
 
-        <section class="section profile-top-section">
-            <img src="보험콕 프로필.jpg" alt="문수정 감사 프로필" class="profile-image-top">
-            <p class="small-text">탄산처럼 톡 쏘는 보험</p>
-            <h1 class="main-title">보험콕 배민준</h1>
-            <p class="contact-info">T. 010-4138-3577 | E. yu4867@naver.com</p>
-        </section>
-        
-        <section class="section top-cta-section">
-            <a href="https://www.gosiweek.com/article/1065578986181515" target="_blank" class="cta-interview-button">
-                보험콕 | 신한SOHO 출강 언론기사
-            </a>
-        </section>
-        
-        <section class="section shorts-section">
-            <h2 class="section-title">1분 만에 보험콕!</h2>
-            <p class="section-description">
-                헷갈리는 보험 콕 집어드릴게요
-            </p>
-            
-            <div class="shorts-slider">
-                <div class="shorts-item">
-                    <iframe 
-                        src="https://www.youtube.com/embed/dDnJT9xXjRM?rel=0&controls=1&playsinline=1" 
-                        title="Shorts 1" 
-                        referrerpolicy="no-referrer"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-                <div class="shorts-item">
-                    <iframe 
-                        src="https://www.youtube.com/embed/a40vuFs6E4E?rel=0&controls=1&playsinline=1" 
-                        title="Shorts 2" 
-                        referrerpolicy="no-referrer"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-                <div class="shorts-item">
-                    <iframe 
-                        src="https://www.youtube.com/embed/cL4ZWScpZME?rel=0&controls=1&playsinline=1" 
-                        title="Shorts 3" 
-                        referrerpolicy="no-referrer"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-                <div class="shorts-item">
-                    <iframe 
-                        src="https://www.youtube.com/embed/dKGQXq0IYp4?rel=0&controls=1&playsinline=1" 
-                        title="Shorts 4" 
-                        referrerpolicy="no-referrer"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-                <div class="spacer"></div>
-            </div>
-        </section>
+/* 섹션 공통 스타일 */
+.section {
+    padding: 20px 20px;
+    text-align: center;
+}
 
-        <section class="section profile-middle-section">
-            <div class="divider-line"></div>
-            <img src="중간프로필-이미지-001.jpg" alt="문수정 중간 프로필" class="profile-image-middle">
-            
-            <div class="brand-title-block">
-                <h2 class="section-title">
-                숫자가 아닌 사람을<br>
-                먼저 보겠습니다
-                </h2>
-            </div>
-        </section>
+/* --- 1. 상단 프로필 --- */
+.profile-top-section {
+    padding-top: 40px;
+    background-color: #f8f8f8;
+}
 
-        <section class="section service-section">
-            <h3 class="subsection-title">꼭 필요한 서비스만 간결하게</h3>
-            <p class="subsection-description">
-                복잡한 과정 없이, 핵심 솔루션만 신속하게 제공합니다.
-            </p>
+.profile-image-top {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    object-fit: cover;
+}
 
-            <div class="service-icon-grid">
-                <div class="icon-item">
-                    <i class="fas fa-coins icon"></i>
-                    <p>연금 설계</p>
-                </div>
-                <div class="icon-item">
-                    <i class="fas fa-shield-alt icon"></i>
-                    <p>보험 분석</p>
-                </div>
-                <div class="icon-item">
-                    <i class="fas fa-file-alt icon"></i>
-                    <p>청구 대행</p>
-                </div>
-            </div>
-        </section>
+.small-text {
+    font-size: 0.9em;
+    color: #C70000;
+    font-weight: 500;
+}
 
-        <section class="section contact-section">
-            <div class="contact-box">
-                <img src="20251211_212926.png" alt="문수정 소형 프로필" class="profile-image-small">
-                <h3 class="call-title">작은 궁금증도 괜찮습니다<br>
-                편하게 연락주세요</h3>
-                <div class="call-time">
-                    365일 24시간 상담
-                </div>
-                <div class="button-group">
-                    <a href="tel:01021932456" id="btnCall" class="action-button primary-btn">전화 상담</a>
-                    <a href="https://open.kakao.com/o/sSziku6h" id="btnKakao" target="_blank" class="action-button secondary-btn">카카오톡 채팅 상담</a>
-                    <a href="https://blog.naver.com/yu4867" target="_blank" class="action-button secondary-btn" style="background-color:#03C75A; color:white; border:none;">네이버 블로그</a>
-                </div>
-            </div>
-        </section>
+.main-title {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #333;
+    margin: 5px 0 5px;
+}
 
-    </div> <div id="eventModal" class="modal-overlay" style="display: none;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <span class="modal-title">🎁 청첩장 고객님께 전달드리는 정보</span>
-                <button onclick="closeModal()" class="close-btn">&times;</button>
-            </div>
-            
-            <div class="modal-video-container">
-                <iframe 
-                    id="popupVideo"
-                    src="https://www.youtube.com/embed/a40vuFs6E4E?enablejsapi=1&rel=0&controls=1" 
-                    title="Event Video" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            </div>
-            
-            <button onclick="closeModal()" class="action-button primary-btn" style="width:100%; margin-top:15px;">
-                닫고 보험콕 살펴보기
-            </button>
-        </div>
-    </div>
+.contact-info {
+    font-size: 0.85em;
+    color: #666;
+    margin-bottom: 20px;
+}
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // URL 파라미터 확인 (?type=wedding)
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('type') === 'wedding') {
-                document.getElementById('eventModal').style.display = 'flex';
-            }
-        });
+/* --- 1-1. 상단 CTA 버튼 --- */
+.top-cta-section {
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+    margin-bottom: 20px;
+}
 
-        function closeModal() {
-            const modal = document.getElementById('eventModal');
-            const iframe = document.getElementById('popupVideo');
-            modal.style.display = 'none';
-            // 영상 정지
-            const currentSrc = iframe.src;
-            iframe.src = ''; 
-            iframe.src = currentSrc; 
-        }
-    </script>
-</body>
-</html>
+.cta-interview-button {
+    display: block;
+    width: 90%;
+    padding: 15px 20px;
+    background-color: #C70000;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.1em;
+    font-weight: 500;
+    border-radius: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s;
+    margin: 0 auto;
+}
+
+.cta-interview-button:hover {
+    background-color: #A93030;
+}
+
+/* --- 2. 숏츠(Shorts) 섹션 --- */
+.shorts-section {
+    background-color: #fff;
+    padding-bottom: 40px;
+    border-top: 10px solid #f8f8f8;
+}
+
+.section-title {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: #333;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.section-description {
+    font-size: 0.95em;
+    font-weight: 400;
+    color: #C70000;
+    margin-top: -10px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    padding: 0 10px;
+}
+
+/* 숏츠 슬라이드 (가로 스크롤) */
+.shorts-slider {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding: 0 20px 20px 20px;
+    
+    scroll-snap-type: x mandatory;
+    
+    /* PC 스크롤바 디자인 */
+    scrollbar-width: thin;
+    scrollbar-color: #d1d1d1 transparent;
+}
+
+/* 크롬, 사파리 스크롤바 */
+.shorts-slider::-webkit-scrollbar {
+    height: 8px;
+}
+.shorts-slider::-webkit-scrollbar-track {
+    background: transparent;
+}
+.shorts-slider::-webkit-scrollbar-thumb {
+    background-color: #d1d1d1;
+    border-radius: 4px;
+}
+.shorts-slider::-webkit-scrollbar-thumb:hover {
+    background-color: #C70000;
+}
+
+/* 개별 영상 카드 */
+.shorts-item {
+    flex: 0 0 160px; /* 고정 너비 */
+    height: 284px;   /* 고정 높이 */
+    background-color: #000;
+    border-radius: 15px;
+    overflow: hidden;
+    scroll-snap-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    position: relative;
+}
+
+.shorts-item iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.spacer {
+    flex: 0 0 1px;
+}
+
+/* --- 3. 중간 프로필 --- */
+.profile-middle-section {
+    padding: 20px 0 0;
+}
+
+.divider-line {
+    width: 50px;
+    height: 2px;
+    background-color: #e0e0e0;
+    margin: 20px auto;
+}
+
+.brand-title-block {
+    background-color: #C70000;
+    padding: 40px 20px;
+    margin: 0;
+}
+
+.brand-title-block .section-title {
+    font-size: 1.3em;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.profile-image-middle {
+    width: 100%;
+    border-radius: 0;
+    margin: 10px 0 0;
+    display: block;
+    height: auto;
+}
+
+/* --- 4. 서비스 소개 --- */
+.service-section {
+    background-color: #F8F8F8;
+}
+
+.subsection-title {
+    font-size: 1.2em;
+    color: #333;
+    font-weight: 500;
+    margin: 40px 0 10px;
+}
+
+.subsection-description {
+    font-size: 0.9em;
+    font-weight: 400;
+    color: #C70000;
+    margin-top: 0;
+    margin-bottom: 50px;
+    line-height: 1.4;
+    padding: 0 10px;
+}
+
+.service-icon-grid {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0 20px;
+}
+
+.icon-item {
+    text-align: center;
+    color: #555;
+    font-size: 0.9em;
+}
+
+.icon {
+    font-size: 2.5em;
+    color: #C70000;
+    margin-bottom: 5px;
+}
+
+/* --- 5. 연락처 및 버튼 --- */
+.contact-section {
+    padding: 30px 20px;
+    background-color: #ffffff;
+}
+
+.contact-box {
+    border: 1px solid #C70000;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-image-small {
+    width: 100px;
+    height: 90px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+
+.call-title {
+    font-size: 1.0em;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.call-time {
+    font-size: 0.8em;
+    color: #999;
+    margin-bottom: 20px;
+}
+
+.button-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.action-button {
+    display: block;
+    width: 93%;
+    padding: 12px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.primary-btn {
+    background-color: #C70000;
+    color: #ffffff;
+    border: 1px solid #C70000;
+}
+.primary-btn:hover {
+    background-color: #A93030;
+}
+
+.secondary-btn {
+    background-color: #ffffff;
+    color: #C70000;
+    border: 1px solid #C70000;
+}
+.secondary-btn:hover {
+    background-color: #ffeaea;
+}
+
+/* --- 6. 팝업 모달 스타일 (수정됨) --- */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background: white;
+    /* [수정됨] 팝업 크기 확보 */
+    width: 90%; 
+    max-width: 400px;
+    
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    animation: slideUp 0.4s ease-out;
+    margin: 0 auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.modal-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #999;
+}
+
+.modal-video-container {
+    position: relative;
+    padding-bottom: 177.77%; /* 9:16 비율 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #000;
+}
+
+.modal-video-container iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@media (max-width: 380px) {
+    .shorts-item {
+        flex: 0 0 200px;
+        height: 355px;
+    }
+}
