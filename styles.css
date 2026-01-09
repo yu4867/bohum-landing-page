@@ -344,3 +344,117 @@ body {
     color: #999;
 
 }
+
+/* --- [새로 추가] 유튜브 숏츠 섹션 스타일 --- */
+.shorts-section {
+    background-color: #fff; /* 배경 흰색 */
+    padding-bottom: 40px;
+    border-top: 10px solid #f8f8f8; /* 위 섹션과 구분선 */
+}
+
+/* 슬라이드 전체 틀 (가로 스크롤) */
+.shorts-slider {
+    display: flex;
+    gap: 15px; /* 영상 사이 간격 */
+    overflow-x: auto; /* 가로 스크롤 허용 */
+    padding: 10px 20px 20px 20px; /* 좌우 여백 */
+    
+    /* 부드러운 스크롤 & 딱딱 끊기게(Snap) 설정 */
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; /* 모바일 부드러운 스크롤 */
+    
+    /* 스크롤바 숨기기 */
+    scrollbar-width: none; /* Firefox */
+}
+
+/* 스크롤바 숨기기 (Chrome, Safari) */
+/* 슬라이드 전체 틀 */
+.shorts-slider {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto; /* 가로 스크롤 허용 */
+    padding: 0 20px 20px 20px;
+    
+    /* 부드러운 스크롤 & 딱딱 끊기게(Snap) 설정 */
+    scroll-snap-type: x mandatory;
+    
+    /* [수정됨] PC에서 스크롤바가 보이도록 설정 */
+    scrollbar-width: thin; /* 파이어폭스용 얇은 스크롤바 */
+    scrollbar-color: #d1d1d1 transparent; /* 파이어폭스 색상 */
+}
+
+/* [수정됨] 크롬, 사파리, 엣지용 스크롤바 디자인 */
+.shorts-slider::-webkit-scrollbar {
+    height: 8px; /* 스크롤바 높이 (얇게) */
+}
+
+.shorts-slider::-webkit-scrollbar-track {
+    background: transparent; /* 트랙 배경 투명 */
+}
+
+.shorts-slider::-webkit-scrollbar-thumb {
+    background-color: #d1d1d1; /* 스크롤바 색상 (연한 회색) */
+    border-radius: 4px; /* 둥근 모서리 */
+}
+
+.shorts-slider::-webkit-scrollbar-thumb:hover {
+    background-color: #C70000; /* 마우스 올렸을 때 브랜드 컬러(빨강)로 변경 */
+}
+
+/* 개별 영상 카드 */
+.shorts-item {
+    flex: 0 0 160px; 
+    height: 284px;   
+    background-color: #000;
+    border-radius: 10px;
+    overflow: hidden;
+    scroll-snap-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.shorts-item iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    /* [중요] 유튜브 위에서 마우스 이벤트 간섭 방지 (선택 사항) */
+    /* pointer-events: none; 을 넣으면 드래그는 잘 되지만 재생이 안 됩니다. */
+}
+
+.spacer {
+    flex: 0 0 1px;
+}
+
+/* 개별 영상 카드 */
+.shorts-item {
+    /* 숏츠 비율 9:16 유지하면서 적당한 크기 */
+    flex: 0 0 160px; /* 너비 고정 */
+    height: 284 px; /* 240 * (16/9) ≈ 426 */
+    
+    background-color: #000;
+    border-radius: 15px; /* 둥근 모서리 */
+    overflow: hidden;
+    scroll-snap-align: center; /* 스크롤 시 가운데 정렬 */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* 그림자 */
+    position: relative;
+}
+
+/* 아이프레임 꽉 채우기 */
+.shorts-item iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* 오른쪽 끝 여백 */
+.spacer {
+    flex: 0 0 1px;
+}
+
+/* 모바일 화면에서 크기 조정 (선택 사항) */
+@media (max-width: 380px) {
+    .shorts-item {
+        flex: 0 0 200px;
+        height: 355px;
+    }
+}
