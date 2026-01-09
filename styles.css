@@ -1,19 +1,22 @@
 /* 기본 설정 및 폰트 */
 body {
     font-family: 'Noto Sans KR', sans-serif;
-    background-color: #e9e9e9; /* 배경색을 연한 회색으로 설정 */
+    background-color: #e9e9e9;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
+    /* [수정됨] flex 제거 (팝업 위치 오류 해결) */
 }
 
-/* 컨테이너: 모바일 뷰포트 크기로 제한 */
+/* 컨테이너 */
 .container {
     width: 100%;
-    max-width: 450px; /* 모바일처럼 보이도록 너비 제한 */
-    background-color: #fff; /* 콘텐츠 배경색은 흰색 */
+    max-width: 450px;
+    background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+    /* [수정됨] 화면 중앙 정렬 */
+    margin: 0 auto; 
+    min-height: 100vh;
 }
 
 /* 섹션 공통 스타일 */
@@ -56,158 +59,161 @@ body {
     margin-bottom: 20px;
 }
 
-/* --- 1-1. 상단 CTA 버튼 섹션 (새로 추가) --- */
+/* --- 1-1. 상단 CTA 버튼 --- */
 .top-cta-section {
-    padding: 10px 20px; /* 위아래 여백을 줍니다 */
-    background-color: #f8f8f8; /* 상단 프로필 섹션과 동일한 배경 */
-    margin-bottom: 20px; /* 다음 섹션과의 간격 */
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+    margin-bottom: 20px;
 }
 
 .cta-interview-button {
     display: block;
     width: 90%;
     padding: 15px 20px;
-    
-    /* 버튼 색상 */
-    background-color: #C70000; 
-    color: #ffffff; /* 흰색 텍스트 */
-    
+    background-color: #C70000;
+    color: #ffffff;
     text-align: center;
     text-decoration: none;
     font-size: 1.1em;
     font-weight: 500;
-    
-    /* 이미지와 유사한 둥근 모서리 */
-    border-radius: 40px; 
-    
-    /* 입체감 있는 그림자 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-    
+    border-radius: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: background-color 0.2s;
+    margin: 0 auto;
 }
 
 .cta-interview-button:hover {
-    /* 호버 시 약간 어두운 베이지색으로 변경 */
     background-color: #A93030;
 }
 
-/* --- 2. 중간 프로필 --- */
+/* --- 2. 숏츠(Shorts) 섹션 --- */
+.shorts-section {
+    background-color: #fff;
+    padding-bottom: 40px;
+    border-top: 10px solid #f8f8f8;
+}
+
+.section-title {
+    font-size: 1.2em;
+    font-weight: 700;
+    color: #333;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.section-description {
+    font-size: 0.95em;
+    font-weight: 400;
+    color: #C70000;
+    margin-top: -10px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    padding: 0 10px;
+}
+
+/* 숏츠 슬라이드 (가로 스크롤) */
+.shorts-slider {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding: 0 20px 20px 20px;
+    
+    scroll-snap-type: x mandatory;
+    
+    /* PC 스크롤바 디자인 */
+    scrollbar-width: thin;
+    scrollbar-color: #d1d1d1 transparent;
+}
+
+/* 크롬, 사파리 스크롤바 */
+.shorts-slider::-webkit-scrollbar {
+    height: 8px;
+}
+.shorts-slider::-webkit-scrollbar-track {
+    background: transparent;
+}
+.shorts-slider::-webkit-scrollbar-thumb {
+    background-color: #d1d1d1;
+    border-radius: 4px;
+}
+.shorts-slider::-webkit-scrollbar-thumb:hover {
+    background-color: #C70000;
+}
+
+/* 개별 영상 카드 */
+.shorts-item {
+    flex: 0 0 160px; /* 고정 너비 */
+    height: 284px;   /* 고정 높이 */
+    background-color: #000;
+    border-radius: 15px;
+    overflow: hidden;
+    scroll-snap-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    position: relative;
+}
+
+.shorts-item iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.spacer {
+    flex: 0 0 1px;
+}
+
+/* --- 3. 중간 프로필 --- */
 .profile-middle-section {
-    /* 기존 스타일 유지 */
-    padding: 20px 0 0; /* 배경 블록을 섹션 전체 너비로 확장하기 위해 좌우 padding 0으로 조정 */
+    padding: 20px 0 0;
 }
 
 .divider-line {
-    /* 기존 스타일 유지 */
     width: 50px;
     height: 2px;
     background-color: #e0e0e0;
     margin: 20px auto;
 }
 
-/* 2-1. 새로운 타이틀 블록 스타일 추가 */
 .brand-title-block {
-    /* 배경색 적용 */
     background-color: #C70000;
-    /* 상단/하단 패딩으로 블록의 높이 확보 */
-    padding: 40px 20px; 
-    margin: 0px 0 0; /* 중간 프로필 이미지 아래에 간격 없이 바로 붙임 */
+    padding: 40px 20px;
+    margin: 0;
 }
 
-/* 2-2. 섹션 타이틀 스타일 수정 (텍스트 색상 오버라이드) */
 .brand-title-block .section-title {
     font-size: 1.3em;
     font-weight: 500;
-    color: #ffffff; /* 이 텍스트만 흰색으로 고정 */
+    color: #ffffff;
     margin: 0;
     line-height: 1.4;
 }
-.profile-image-middle {
-    width: 100%; /* 너비를 100%로 변경하여 컨테이너에 꽉 채우도록 합니다. */
-    border-radius: 0; /* 블록 스타일과의 일관성을 위해 둥근 모서리 제거 */
-    margin: 10px 0 0; /* 이미지 하단 마진 제거 */
-    display: block; /* 인라인 요소 공백 방지 */
-    height: auto;
-}
 
-.more-info-link {
-    font-size: 0.85em;
-    color: #a08c6c;
-    margin-top: 15px;
-    cursor: pointer;
+.profile-image-middle {
+    width: 100%;
+    border-radius: 0;
+    margin: 10px 0 0;
+    display: block;
+    height: auto;
 }
 
 /* --- 4. 서비스 소개 --- */
 .service-section {
-    /* 배경을 더 밝고 깨끗한 톤으로 변경하여 가독성 높임 */
-    background-color: #F8F8F8; 
-}
-
-.section-description {
-    font-size: 0.95em; /* 주 제목보다 작게 */
-    font-weight: 400;
-    color: #C70000; /* 진한 회색으로 차분하게 */
-    margin-top: -10px; /* 제목과 좀 더 가깝게 붙이고 */
-    margin-bottom: 20px; /* 아래 이미지와의 간격 확보 */
-    line-height: 1.5;
-    padding: 0 10px;
-}
-
-.service-points-image {
-    width: 100%; /* 컨테이너 너비에 맞춥니다 */
-    max-width: 100%;
-    height: auto;
-    display: block;
-    /* 상하 마진 조정: 위 제목과 아래 부제목과의 간격 확보 */
-    margin: 10px auto 30px auto; 
-    border-radius: 5px; /* 이미지를 부드럽게 보이도록 약간의 모서리 둥글게 처리 */
-}
-
-.subsection-title {
-    font-size: 1.2em;
-    color: #C70000;
-    font-weight: 500;
-    /* 이미지와의 간격 확보를 위해 margin-top을 조정했습니다. */
-    margin: 30px 0 15px; 
-}
-
-.section-title {
-    /* 상위 섹션의 .section-title은 #C70000, 이 섹션은 #333 유지 또는 변경 */
-    /* 일관성을 위해 여기는 #333을 유지하거나, 아예 H2 제목에 브랜드 색상 적용 권장 */
-    color: #333; /* 일반적인 섹션 제목 색상 유지 */
-}
-
-.service-section .section-title {
-    /* 3. 로고 그리드 섹션의 h3.logo-grid-title과 동일하게 설정 */
-    font-size: 1.2em;
-    font-weight: 700;
-    color: #333; 
-    
-    /* 적절한 상하 마진 설정 */
-    margin-top: 5px; 
-    margin-bottom: 15px; /* 다음 요소(.service-points)와의 간격 확보 */
-}
-
-.service-section {
     background-color: #F8F8F8;
-    /* padding: 20px 20px; (기본 .section 스타일 유지) */
 }
-
 
 .subsection-title {
     font-size: 1.2em;
-    /* 서브 제목에 브랜드 색상 적용하여 강조 */
-    color: #333; 
+    color: #333;
     font-weight: 500;
     margin: 40px 0 10px;
 }
 
 .subsection-description {
-    font-size: 0.9em; /* 주 부제목보다 작게 */
+    font-size: 0.9em;
     font-weight: 400;
-    color: #C70000; /* 차분한 회색 */
-    margin-top: 0; /* 부제목과 가깝게 붙이고 */
-    margin-bottom: 50px; /* 아이콘 그리드와의 간격 확보 */
+    color: #C70000;
+    margin-top: 0;
+    margin-bottom: 50px;
     line-height: 1.4;
     padding: 0 10px;
 }
@@ -220,18 +226,15 @@ body {
 
 .icon-item {
     text-align: center;
-    /* 아이콘 설명 텍스트는 진한 회색으로 유지 */
-    color: #555; 
+    color: #555;
     font-size: 0.9em;
 }
 
 .icon {
     font-size: 2.5em;
-    /* 브랜드 색상 그대로 유지 */
-    color: #C70000; 
+    color: #C70000;
     margin-bottom: 5px;
 }
-
 
 /* --- 5. 연락처 및 버튼 --- */
 .contact-section {
@@ -240,9 +243,8 @@ body {
 }
 
 .contact-box {
-    /* 요청 사항: 전체 테두리를 #C70000으로 변경 */
-    border: 1px solid #C70000; 
-    border-radius: 10px; /* 박스 모서리 유지 */
+    border: 1px solid #C70000;
+    border-radius: 10px;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -280,178 +282,100 @@ body {
     display: block;
     width: 93%;
     padding: 12px;
-    /* 버튼 모양 유지: 둥근 모서리 (25px) */
-    border-radius: 25px; 
+    border-radius: 25px;
     text-decoration: none;
     font-weight: 500;
     transition: background-color 0.2s;
+    text-align: center;
+    margin: 0 auto;
 }
 
-/* 1. 전화 상담 예약 버튼 (Primary Button) */
 .primary-btn {
-    /* 요청 사항: 배경색 #C70000 */
-    background-color: #C70000; 
-    /* 요청 사항: 텍스트 흰색 */
-    color: #ffffff; 
-    /* 요청 사항: 테두리 #C70000 */
-    border: 1px solid #C70000; 
+    background-color: #C70000;
+    color: #ffffff;
+    border: 1px solid #C70000;
 }
-
 .primary-btn:hover {
-    /* 호버 시 색상 변경 유지 */
     background-color: #A93030;
 }
 
-/* 2. 카카오톡 채팅 상담 버튼 (Secondary Button) */
 .secondary-btn {
-    background-color: #ffffff; /* 배경 흰색 유지 */
-    /* 요청 사항: 텍스트 색상 #C70000 */
-    color: #C70000; 
-    /* 요청 사항: 테두리 #C70000 */
+    background-color: #ffffff;
+    color: #C70000;
     border: 1px solid #C70000;
 }
-
 .secondary-btn:hover {
-    /* 호버 시 옅은 붉은색 배경 유지 */
-    background-color: #ffeaea; 
+    background-color: #ffeaea;
 }
 
-/* --- 6. 메인 배너 --- */
-.main-banner-section {
-    padding: 0;
+/* --- 6. 팝업 모달 스타일 (수정됨) --- */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
-/* ... (이후 코드는 변경 없이 유지) ... */
 
-/* --- 7. 하단 푸터 --- */
-.footer {
-    padding: 20px 0 50px; /* 아래쪽 여백을 더 줍니다 */
-    text-align: center;
+.modal-content {
+    background: white;
+    /* [수정됨] 팝업 크기 확보 */
+    width: 90%; 
+    max-width: 400px;
+    
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    animation: slideUp 0.4s ease-out;
+    margin: 0 auto;
 }
 
-.footer-icons {
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 15px;
 }
 
-.footer-icons a {
+.modal-title {
+    font-weight: bold;
+    font-size: 1.1rem;
     color: #333;
-    font-size: 1.2em;
-    margin: 0 15px;
-    text-decoration: none;
 }
 
-.copyright {
-    font-size: 0.75em;
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
     color: #999;
-
 }
 
-/* --- [새로 추가] 유튜브 숏츠 섹션 스타일 --- */
-.shorts-section {
-    background-color: #fff; /* 배경 흰색 */
-    padding-bottom: 40px;
-    border-top: 10px solid #f8f8f8; /* 위 섹션과 구분선 */
-}
-
-/* 슬라이드 전체 틀 (가로 스크롤) */
-.shorts-slider {
-    display: flex;
-    gap: 15px; /* 영상 사이 간격 */
-    overflow-x: auto; /* 가로 스크롤 허용 */
-    padding: 10px 20px 20px 20px; /* 좌우 여백 */
-    
-    /* 부드러운 스크롤 & 딱딱 끊기게(Snap) 설정 */
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch; /* 모바일 부드러운 스크롤 */
-    
-    /* 스크롤바 숨기기 */
-    scrollbar-width: none; /* Firefox */
-}
-
-/* 스크롤바 숨기기 (Chrome, Safari) */
-/* 슬라이드 전체 틀 */
-.shorts-slider {
-    display: flex;
-    gap: 15px;
-    overflow-x: auto; /* 가로 스크롤 허용 */
-    padding: 0 20px 20px 20px;
-    
-    /* 부드러운 스크롤 & 딱딱 끊기게(Snap) 설정 */
-    scroll-snap-type: x mandatory;
-    
-    /* [수정됨] PC에서 스크롤바가 보이도록 설정 */
-    scrollbar-width: thin; /* 파이어폭스용 얇은 스크롤바 */
-    scrollbar-color: #d1d1d1 transparent; /* 파이어폭스 색상 */
-}
-
-/* [수정됨] 크롬, 사파리, 엣지용 스크롤바 디자인 */
-.shorts-slider::-webkit-scrollbar {
-    height: 8px; /* 스크롤바 높이 (얇게) */
-}
-
-.shorts-slider::-webkit-scrollbar-track {
-    background: transparent; /* 트랙 배경 투명 */
-}
-
-.shorts-slider::-webkit-scrollbar-thumb {
-    background-color: #d1d1d1; /* 스크롤바 색상 (연한 회색) */
-    border-radius: 4px; /* 둥근 모서리 */
-}
-
-.shorts-slider::-webkit-scrollbar-thumb:hover {
-    background-color: #C70000; /* 마우스 올렸을 때 브랜드 컬러(빨강)로 변경 */
-}
-
-/* 개별 영상 카드 */
-.shorts-item {
-    flex: 0 0 160px; 
-    height: 284px;   
-    background-color: #000;
+.modal-video-container {
+    position: relative;
+    padding-bottom: 177.77%; /* 9:16 비율 */
+    height: 0;
+    overflow: hidden;
     border-radius: 10px;
-    overflow: hidden;
-    scroll-snap-align: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    position: relative;
+    background: #000;
 }
 
-.shorts-item iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    /* [중요] 유튜브 위에서 마우스 이벤트 간섭 방지 (선택 사항) */
-    /* pointer-events: none; 을 넣으면 드래그는 잘 되지만 재생이 안 됩니다. */
+.modal-video-container iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
 }
 
-.spacer {
-    flex: 0 0 1px;
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
-/* 개별 영상 카드 */
-.shorts-item {
-    /* 숏츠 비율 9:16 유지하면서 적당한 크기 */
-    flex: 0 0 160px; /* 너비 고정 */
-    height: 284 px; /* 240 * (16/9) ≈ 426 */
-    
-    background-color: #000;
-    border-radius: 15px; /* 둥근 모서리 */
-    overflow: hidden;
-    scroll-snap-align: center; /* 스크롤 시 가운데 정렬 */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* 그림자 */
-    position: relative;
-}
-
-/* 아이프레임 꽉 채우기 */
-.shorts-item iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-/* 오른쪽 끝 여백 */
-.spacer {
-    flex: 0 0 1px;
-}
-
-/* 모바일 화면에서 크기 조정 (선택 사항) */
 @media (max-width: 380px) {
     .shorts-item {
         flex: 0 0 200px;
